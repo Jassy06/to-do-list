@@ -146,13 +146,13 @@ function AppScaffold() {
 
       <ScrollView
         style={styles.content}
-        contentContainerStyle={[isTablet && styles.contentTablet, { paddingBottom: 24 }]}
+        contentContainerStyle={[styles.flexContainer, isTablet && styles.contentTablet, { paddingBottom: 24 }]}
         keyboardShouldPersistTaps="handled"
       >
-        <View style={[styles.column, isTablet && styles.columnTablet, { paddingRight: 8, marginBottom: 16 }]}>
+        <View style={[styles.cardWrapper, isTablet && styles.cardWrapperTablet]}>
           <TodosCard />
         </View>
-        <View style={[styles.column, isTablet && styles.columnTablet, { paddingLeft: 8, marginTop: 16 }]}>
+        <View style={[styles.cardWrapper, isTablet && styles.cardWrapperTablet]}>
           <FinishedTasksCard />
         </View>
       </ScrollView>
@@ -301,6 +301,20 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     paddingHorizontal: 16,
   },
+  flexContainer: {
+    flexDirection: "column",
+    flexGrow: 1,
+  },
+  cardWrapper: {
+    marginHorizontal: 16,
+    marginVertical: 8,
+    minHeight: 200,
+  },
+  cardWrapperTablet: {
+    marginHorizontal: 8,
+    marginVertical: 8,
+    minHeight: 300,
+  },
   column: {
     flex: 1,
     paddingHorizontal: 16,
@@ -317,11 +331,11 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.2,
     shadowRadius: 4,
     borderRadius: 8,
+    flex: 1,
   },
   banner: {
     backgroundColor: "#6200ee",
     color: "#fff",
-    // Adjust banner size for standard appearance
     textAlign: "center",
     paddingVertical: 4,
     minHeight: 40,
